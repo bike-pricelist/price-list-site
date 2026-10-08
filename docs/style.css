@@ -1,0 +1,93 @@
+:root {
+  --accent: #9b2533;
+  --accent-ink: #ffffff;
+  --bg: #f6f6f4;
+  --card: #ffffff;
+  --ink: #1d1d1f;
+  --muted: #6b6b70;
+  --line: #e4e4e0;
+  --chip: #f1ece8;
+  --ok: #1f6b3a;
+  --warn-bg: #fff4d6;
+  --warn-ink: #6b4e00;
+  --wa: #1fa855;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #d0495a;
+    --bg: #111113;
+    --card: #1c1c1f;
+    --ink: #f2f2f2;
+    --muted: #a3a3a8;
+    --line: #2e2e33;
+    --chip: #2a2326;
+    --ok: #6fd18f;
+    --warn-bg: #3a3014;
+    --warn-ink: #f3d68a;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+[hidden] { display: none !important; }
+h1 { font-size: 1.2rem; margin: 0; }
+.muted { color: var(--muted); margin: 0; }
+.small { font-size: .85rem; }
+.center { text-align: center; padding: 16px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Lock + message screens */
+.lock { min-height: 100dvh; display: grid; place-items: center; padding: 16px; }
+.lock-card {
+  width: 100%; max-width: 360px; background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; padding: 28px 20px; display: grid; gap: 12px; text-align: center;
+}
+.lock-icon { margin: 0 auto; border-radius: 12px; }
+input, select, button { font: inherit; }
+#pw, #q, #brand {
+  width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--ink);
+}
+#pw:focus, #q:focus, #brand:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+#unlock {
+  padding: 12px; border: 0; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
+  font-weight: 600; cursor: pointer;
+}
+#unlock:disabled { opacity: .6; cursor: progress; }
+.lock-msg { min-height: 1.2em; margin: 0; color: var(--accent); font-weight: 600; }
+
+/* App */
+.top {
+  position: sticky; top: 0; z-index: 2; background: var(--bg);
+  padding: max(12px, env(safe-area-inset-top)) 16px 8px; border-bottom: 1px solid var(--line);
+}
+.title-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card); color: var(--muted); display: grid; place-items: center; cursor: pointer;
+}
+.offline { margin-top: 8px; padding: 8px 12px; border-radius: 8px; background: var(--warn-bg); color: var(--warn-ink); font-size: .85rem; }
+.search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin: 10px 0 6px; }
+#brand { width: auto; max-width: 44vw; padding-right: 8px; }
+.list { list-style: none; margin: 0 auto; padding: 8px 16px 32px; max-width: 760px; display: grid; gap: 8px; }
+.item {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 12px 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center;
+}
+.desc { font-weight: 600; overflow-wrap: anywhere; }
+.meta { grid-column: 1; color: var(--muted); font-size: .85rem; display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.part { font-family: ui-monospace, "SF Mono", Consolas, monospace; color: var(--ink); }
+.chip { background: var(--chip); border-radius: 6px; padding: 0 6px; }
+.price { grid-column: 2; grid-row: 1; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price.request { font-weight: 500; color: var(--muted); font-size: .9rem; }
+.share {
+  grid-column: 2; grid-row: 2; justify-self: end; display: inline-flex; align-items: center; gap: 4px;
+  color: var(--wa); font-size: .85rem; font-weight: 600; text-decoration: none; padding: 4px 0;
+}
+@media (min-width: 760px) { .top { padding-left: calc(50% - 364px); padding-right: calc(50% - 364px); } }
