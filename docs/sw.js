@@ -1,5 +1,5 @@
 // Keeps the app itself available offline. Prices are saved by app.js.
-const CACHE = "price-list-shell-v1";
+const CACHE = "price-list-shell-v2";
 const SHELL = ["./", "./index.html", "./style.css", "./app.js", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
